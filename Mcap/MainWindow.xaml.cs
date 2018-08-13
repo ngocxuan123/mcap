@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mcap.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,23 @@ namespace Mcap
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Menu_Cick(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            switch (button.Content)
+            {
+                case "Worklist":
+                    DataContext = new WorkListViewModel();
+                    break;
+                case "Home":
+                    DataContext = new HomeViewModel();
+                    break;
+                default:
+                    DataContext = new HomeViewModel();
+                    break;
+            }
         }
     }
 }

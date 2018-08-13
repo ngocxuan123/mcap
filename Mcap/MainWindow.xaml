@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mcap"
+        xmlns:views="clr-namespace:Mcap.Views"
+        xmlns:viewmodels="clr-namespace:Mcap.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Name="homeViewModel" DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:Home DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="worklistViewModel" DataType="{x:Type viewmodels:WorkListViewModel}">
+            <views:WorkList DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Content="Worklist" Width="100" Height="40" Margin="5" HorizontalAlignment="Left" Click="Menu_Cick"/>
+            <Button Content="Home" Width="100" Height="40" Margin="5" HorizontalAlignment="Left"  Click="Menu_Cick" />
+        </StackPanel>
+        <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding}" />
     </Grid>
 </Window>
